@@ -1,0 +1,31 @@
+/* hide items that should not be printed */
+#breadcrumbs, #pageTitleDiv, .genericButton, .backLink, #printnote, #globalNavPageNavArea, #breadcrumbs, #global-nav, .global-nav-bar {
+	display: none;
+}
+/* remove border and padding from container */
+body, #certificate, .container, .containerOptions, .containerPortal, .contentPane, #containerdiv, #contentArea, #schemePreviewBody, .contentBox {
+	border: 0 !important;
+	padding: 0;
+	border-radius: 0;
+	box-shadow: none;
+	text-align: center;
+}
+/* remove fixed height from these elements as they cause printing to go over 2 pages otherwise */
+#contentPanel, #navigationPane {
+	height: auto !important;
+}
+#certificate {
+	margin-bottom: 0;
+}
+/* maximise space for certificate to print */
+@page {
+	size: auto;
+	margin: 5mm;
+}
+body {
+	margin: 0px;
+}
+#certificate img {
+	width: 670px;
+	height: 948px;
+}

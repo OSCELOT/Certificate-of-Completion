@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- core extension information -->
+    <plugin>
+        <name value="Certificate of Completion"/>
+        <handle value="certofcomp"/>
+        <description value="Displays a graphical certificate that can be printed with the participant's name after completing a task within the course/Organisation site."/>
+        <version value="1.0.0"/>
+        <requires>
+            <bbversion value="9.1"/>
+        </requires>
+        <vendor>
+            <id value="gu"/>
+            <name value="Griffith University"/>
+            <url value="http://www.griffith.edu.au/" />
+            <description value="Australia" />
+        </vendor>
+        
+        <http-actions>
+		     <!-- <config value="admin/create.jsp" /> -->
+		     <!-- <view value="index.jsp" />-->
+		</http-actions>
+        
+        <application-defs>
+            <application handle="certofcomp" use-ssl="false" name="Certificate of Completion" is-course-tool="true" is-org-tool="true" is-sys-tool="true">
+                <description lang="en_AU">Displays a graphical certificate that can be printed with the participant's name after completing a task within the course/Organisation site.</description>
+                <links>
+                    <!-- value="tool" is the link that appears in the Tools page of the site along with the "Hide Link" option. This should just link to the user view of the tool. -->
+                    <!-- Not needed for the Certificate of Completion as it is not a tool that would have only one course-wide instance -->
+                    <!-- <link>
+                        <type value="tool"/>
+                        <name value="Certificate of Completion"/>
+                        <url value="index.jsp" />
+                        <description value="Displays a graphical certificate that can be printed with the participant's name after completing a task within the course/Organisation site." />
+	                    <icons>
+	                    	<listitem value="images/certofcomp.gif" />
+	                    </icons>
+                    </link> -->
+                    
+                    <!-- value="system_tool" is the link that appears in the System Admin tab. This should contain options that should only be editable by a System Administrator -->
+                    <!-- For the Certificate of Completion, this would contain the certificate template and example images if editable. However, these are static for now -->
+                    <!-- <link>
+			            <type value="system_tool"/>
+			            <name value="Certificate of Completion"/>
+			            <url value="admin/system_admin.jsp" />
+			            <description value="Displays a graphical certificate that can be printed with the participant's name after completing a task within the course/Organisation site." />
+			            <icons>
+			              	<listitem value="images/certofcomp.gif" />
+			            </icons>
+			          </link>-->
+			          
+			          <!-- value="course_tool" is the link that appears in the Control Panel -->
+			          <!-- <link>
+			            <type value="course_tool"/>
+			            <name value="Certificates of Completion"/>
+			            <url value="admin/course_admin.jsp" />
+			            <description value="Certificates of Completion available for deployment in courses and organisations." />
+			            <icons>
+			              <listitem value="images/certofcomp.gif" />
+			            </icons>
+			          </link> -->
+			          
+                </links>
+            </application>
+        </application-defs>
+
+<!--  Custom Content Types -->
+        <content-handlers>
+	        <content-handler>			
+			    <name value="Certificate of Completion"/>
+       			<handle value="resource/x-gu-certofcomp"/>
+				<http-actions>
+		            <create value="admin/create.jsp?action=create" /> <!-- "create" is the page seen when the tool is selected from the "Tools" menu in a course/org site -->
+		            <modify value="admin/create.jsp?action=modify" />
+		            <!-- <remove value="admin/remove.jsp"/>-->
+		            <view value="index.jsp" />
+		            <!-- cpview will make the Content Item title clickable so you can view the item's page, e.g. index.jsp or whatever is specified in the value -->
+		          	<cpview value="index.jsp" />
+		           	<!-- <config value="admin/config.jsp"/>-->
+		            <can-copy value="true"/>
+		        </http-actions>
+			     <icons>
+		            <toolbar value="images/certofcomp.gif"/>
+		            <listitem value="images/certofcomp.gif"/>
+		        </icons>
+			</content-handler>
+        </content-handlers>
+        
+        <!--  The schema-dirs element allows your building block to create new database objects, including tables, triggers, sequences, etc. For more information see:  -->
+        <!-- 
+        <schema-dirs>
+		  <schema-dir dir-name="test"/>
+		  <schema-dir dir-name="statstest" database="stats"/>
+		</schema-dirs>
+ -->
+<!-- code permissions required for proper operation -->
+        <permissions>
+            <permission type="persist" name="content" actions="create,display,modify,delete"/>
+            <permission type="persist" name="contentfile" actions="create,delete"/>
+            <permission type="attribute" name="user.authinfo" actions="get,set"/>
+            <permission type="attribute" name="user.personalinfo" actions="get,set"/>
+            <permission type="persist" name="user" actions="create,modify,delete"/>
+            <permission type="persist" name="userrole" actions="create,modify,delete"/>
+            <permission type="persist" name="course" actions="create,modify,delete"/>
+    		<permission type="persist" name="ContentHandler" actions="create,modify,delete" />
+    		<permission type="java.io.FilePermission" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" actions="read,write,delete" />
+        </permissions>
+
+    </plugin>
+
+</manifest>

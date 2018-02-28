@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="gu-certofcomp" default="deploy-b2" basedir=".">
+	<description>Builds, tests, and runs the project ${ant.project.name}.</description>
+	<property file="ant.properties" />
+	<taskdef name="b2deploy" classpath="${basedir}/lib/b2deploy-task.jar" classname="org.oscelot.ant.B2DeployTask" />
+
+	<target name="deploy-b2" depends="package-war">
+		<b2deploy localfilepath="${basedir}/${ant.project.name}.war" host="${dev.server}" courseorgavailable="true" />
+	</target>
+
+	<target name="deploy-b2.clean" depends="package-war">
+		<b2deploy localfilepath="${basedir}/${ant.project.name}.war" host="${dev.server}" courseorgavailable="true" clean="true" />
+	</target>
+
+	<target name="package-war">
+		<war destfile="${ant.project.name}.war" webxml="webContent/WEB-INF/web.xml">
+			<fileset dir="webContent"/>
+			<classes dir="bin"></classes>
+			<lib dir="lib/commons"/>
+		</war>
+	</target>
+	
+</project>
