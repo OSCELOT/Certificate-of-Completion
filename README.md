@@ -14,6 +14,9 @@ The Certificate of Completion tool is used for displaying a certificate bearing 
 | **Programming Language** | Java |
 | **Target Platform** | Blackboard Learn |
 
+## Installation
+This repository contains all of the source files, but for installation, you just need the "gu-certofcomp.war" file. Follow the "Install or Update Building Block" instructions at https://help.blackboard.com/Learn/Administrator/Hosting/Tools_Management/Install_and_Manage_Building_Blocks for uploading this .war file to your Blackboard Learn environment.
+
 ## Documentation
 
 Available at https://intranet.secure.griffith.edu.au/computing/using-learning-at-griffith/staff/administration/certificate-of-completion
