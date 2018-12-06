@@ -60,7 +60,7 @@ Course thisCourse = (Course)cLoader.loadById(coursePkId); // could also be achie
 String courseId = thisCourse.getCourseId(); // NOT USED
 
 //the content system (Content Collection) location for this course/org, e.g. /orgs/ORG_NAME - public storage area
-String csLocation = ContentSystemServiceExFactory.getInstance().getDocumentManagerEx().getHomeDirectory(thisCourse);
+String csLocation = ContentSystemServiceExFactory.getInstance().getNavigationManager().getHomeDirectory(thisCourse);
 
 String strReturnUrl = "";
 String fileName = "";
